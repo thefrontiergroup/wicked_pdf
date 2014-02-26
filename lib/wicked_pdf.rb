@@ -78,7 +78,7 @@ class WickedPdf
     puts "------------------- START PDF GENERATION ----------------"
     puts string
     puts return_file
-    puts pdf
+    # puts pdf
     puts command
     puts err
     puts "------------------- STOP PDF GENERATION ----------------"

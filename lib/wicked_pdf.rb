@@ -29,7 +29,7 @@ require 'wicked_pdf/tempfile'
 require 'wicked_pdf/middleware'
 
 class WickedPdf
-  DEFAULT_BINARY_VERSION = Gem::Version.new('0.9.9')
+  DEFAULT_BINARY_VERSION = Gem::Version.new('0.12.1')
   EXE_NAME = "wkhtmltopdf"
   @@config = {}
   cattr_accessor :config
@@ -74,10 +74,10 @@ class WickedPdf
     generated_pdf_file.binmode
     pdf = generated_pdf_file.read
     puts "------------------- PDF GENERATION ----------------"
-    puts command
-    puts err
-    puts generated_pdf_file
-    puts pdf
+    puts "command: " << command
+    puts "err: " << err
+    puts "generated_pdf_file: " << generated_pdf_file
+    puts "PDF: " << pdf
     puts "------------------- PDF GENERATION ----------------"
     # raise "PDF could not be generated!\n PDF: #{pdf}\nStrip: #{pdf.rstrip} | #{pdf.rstrip.length}\n Command Error: #{err}" if pdf and pdf.rstrip.length == 0
     pdf

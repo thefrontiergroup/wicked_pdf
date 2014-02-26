@@ -70,6 +70,9 @@ class WickedPdf
     err = Open3.popen3(command) do |stdin, stdout, stderr|
       stderr.read
     end
+    puts '===== FILE ====='
+    puts generated_pdf_file.read
+    puts '===== FILE ====='
     if return_file = options.delete(:return_file)
       return generated_pdf_file
     end

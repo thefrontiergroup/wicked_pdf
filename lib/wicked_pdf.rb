@@ -82,9 +82,9 @@ class WickedPdf
     puts err
     puts "------------------- STOP PDF GENERATION ----------------"
     generated_pdf_file.rewind
-    pdf = generated_pdf_file.read
+    f = File.open(generated_pdf_file.path, "r")
+    pdf = f.read
     puts '===== FILE ====='
-    puts generated_pdf_file.path
     puts pdf
     puts '===== FILE ====='
     # raise "PDF could not be generated!\n PDF: #{pdf}\nStrip: #{pdf.rstrip} | #{pdf.rstrip.length}\n Command Error: #{err}" if pdf and pdf.rstrip.length == 0

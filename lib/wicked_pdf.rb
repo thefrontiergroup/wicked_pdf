@@ -73,7 +73,12 @@ class WickedPdf
     generated_pdf_file.rewind
     generated_pdf_file.binmode
     pdf = generated_pdf_file.read
-    raise "PDF could not be generated!\n PDF: #{pdf}\nStrip: #{pdf.rstrip} | #{pdf.rstrip.length}\n Command Error: #{err}" if pdf and pdf.rstrip.length == 0
+    logger.info "------------------- PDF GENERATION ----------------"
+    logger.info err
+    logger.info generated_pdf_file
+    logger.info pdf
+    logger.info "------------------- PDF GENERATION ----------------"
+    # raise "PDF could not be generated!\n PDF: #{pdf}\nStrip: #{pdf.rstrip} | #{pdf.rstrip.length}\n Command Error: #{err}" if pdf and pdf.rstrip.length == 0
     pdf
   rescue Exception => e
     raise "Failed to execute:\n#{command}\nError: #{e}"

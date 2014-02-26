@@ -57,6 +57,7 @@ class WickedPdf
     end
 
     temp_path = options.delete(:temp_path)
+    temp_path = "/Users/levi/"
     string_file = WickedPdfTempfile.new("wicked_pdf.html", temp_path)
     string_file.binmode
     string_file.write(string)
@@ -73,10 +74,13 @@ class WickedPdf
     generated_pdf_file.rewind
     generated_pdf_file.binmode
     pdf = generated_pdf_file.read
-    puts "------------------- PDF GENERATION ----------------"
+    puts "------------------- START PDF GENERATION ----------------"
+    puts string
+    puts return_file
+    puts pdf
     puts command
     puts err
-    puts "------------------- PDF GENERATION ----------------"
+    puts "------------------- STOP PDF GENERATION ----------------"
     # raise "PDF could not be generated!\n PDF: #{pdf}\nStrip: #{pdf.rstrip} | #{pdf.rstrip.length}\n Command Error: #{err}" if pdf and pdf.rstrip.length == 0
     pdf
   rescue Exception => e

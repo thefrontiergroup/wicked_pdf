@@ -74,10 +74,8 @@ class WickedPdf
     generated_pdf_file.binmode
     pdf = generated_pdf_file.read
     puts "------------------- PDF GENERATION ----------------"
-    puts "command: " << command
-    puts "err: " << err
-    puts "generated_pdf_file: " << generated_pdf_file
-    puts "PDF: " << pdf
+    puts command
+    puts err
     puts "------------------- PDF GENERATION ----------------"
     # raise "PDF could not be generated!\n PDF: #{pdf}\nStrip: #{pdf.rstrip} | #{pdf.rstrip.length}\n Command Error: #{err}" if pdf and pdf.rstrip.length == 0
     pdf

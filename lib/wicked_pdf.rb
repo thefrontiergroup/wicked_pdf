@@ -55,6 +55,8 @@ class WickedPdf
     if WickedPdf.config[:retreive_version]
       retreive_binary_version
     end
+    puts '===== OPTIONS ====='
+    puts options
 
     temp_path = options.delete(:temp_path)
     temp_path = "/Users/levi/"

@@ -65,6 +65,7 @@ class WickedPdf
     string_file.write(string)
     string_file.close
     generated_pdf_file = WickedPdfTempfile.new("wicked_pdf_generated_file.pdf", temp_path)
+    generated_pdf_file.binmode
     command = "\"#{@exe_path}\" #{parse_options(options)} \"file:///#{string_file.path}\" \"#{generated_pdf_file.path}\" " # -q for no errors on stdout
     print_command(command) if in_development_mode?
     err = Open3.popen3(command) do |stdin, stdout, stderr|
@@ -73,8 +74,6 @@ class WickedPdf
     if return_file = options.delete(:return_file)
       return generated_pdf_file
     end
-    generated_pdf_file.rewind
-    generated_pdf_file.binmode
     puts "------------------- START PDF GENERATION ----------------"
     puts string
     puts return_file
@@ -82,8 +81,10 @@ class WickedPdf
     puts command
     puts err
     puts "------------------- STOP PDF GENERATION ----------------"
+    generated_pdf_file.rewind
     pdf = generated_pdf_file.read
     puts '===== FILE ====='
+    puts generated_pdf_file.path
     puts pdf
     puts '===== FILE ====='
     # raise "PDF could not be generated!\n PDF: #{pdf}\nStrip: #{pdf.rstrip} | #{pdf.rstrip.length}\n Command Error: #{err}" if pdf and pdf.rstrip.length == 0

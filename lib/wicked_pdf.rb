@@ -74,6 +74,7 @@ class WickedPdf
     generated_pdf_file.binmode
     pdf = generated_pdf_file.read
     puts "------------------- PDF GENERATION ----------------"
+    puts command
     puts err
     puts generated_pdf_file
     puts pdf

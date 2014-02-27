@@ -50,7 +50,7 @@ module PdfHelper
 
     def clean_temp_files
       if defined?(@hf_tempfiles)
-        @hf_tempfiles.each { |tf| tf.close! }
+        @hf_tempfiles.each { |tf| tf.close }
       end
     end
 

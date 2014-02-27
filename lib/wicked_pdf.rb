@@ -79,8 +79,8 @@ class WickedPdf
     raise "Failed to execute:\n#{command}\nError: #{e}"
   ensure
     f.close
-    string_file.close! if string_file
-    generated_pdf_file.close! if generated_pdf_file && !return_file
+    string_file.close if string_file
+    generated_pdf_file.close if generated_pdf_file && !return_file
   end
 
   private
